@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
 
 const GifExpertApp = () => {
 
@@ -6,20 +7,22 @@ const GifExpertApp = () => {
                                                                       // para esto se utiliza Hooks - En este caso useState
 
     const [categories, setCategories] = useState(['One Punch', 'Samurai X', 'Dragon Ball']);
-    const handleAdd = () => {
+   /*  const handleAdd = () => {
         //setCategories([...categories, 'Naruto']); //Usando desestructuración, la manera más sencilla. 
         setCategories((c)=>{
             let newCategories = categories.slice();  //También se puede utilizar el callback que recibe como parámetro el valor del estado anterior, 
             newCategories.push('Hunter X Hunter');   //Recordar que no se puede utilizar directamente el push sobre categories, pq es inmutable por React. 
             return newCategories;                    //por esta razón tocaría usar slice() sin parámetros para que retorne un nuevo array y no el puntero al mismo objeto. 
         })
-    }
+    } */ 
+    //Se comenta ya que se usará el AddCategory.
 
     return (
         <>
             <h2>GifExpertApp</h2>
+            <AddCategory setCategories={ setCategories }/>
             <hr />
-            <button onClick = { handleAdd }>Agregar</button>
+            {/* <button onClick = { handleAdd }>Agregar</button> */}
             <ol>
                 {
                     categories.map(category => {
