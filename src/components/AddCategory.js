@@ -14,7 +14,7 @@ export const AddCategory = ({ setCategories }) => { //Recordar que aquí se reci
     const handleSubmit = (e) => {
         e.preventDefault(); //Previene la actualización automática del navegador que hace el form justo al hacer submit (presionar enter). 
         if ( inputValue.trim().length > 2 ){
-            setCategories(categs => [...categs, inputValue]);
+            setCategories(categs => [inputValue, ...categs]);
             setInputValue('');
         }
         
