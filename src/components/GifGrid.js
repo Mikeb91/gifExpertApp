@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { getGifs } from '../utils/getGifs';
+import React from 'react';
+import { useFetchGifs } from '../Hooks/useFetchGifs';
+/* import { getGifs } from '../utils/getGifs'; */
 import { GifGridItem } from './GifGridItem';
 
 export const GifGrid = ({ category }) => {
 
 
-    const [images, setImages] = useState([]);
-    useEffect(() => {
-        getGifs(category)
-        //.then(imgs => setImages(imgs));
-        .then(setImages); // - Esto es lo mismo que lo del comentario pues, al tener la referencia de la función setImages, esta última recibe como parámetro lo que recibe el .then, 
-                          // por lo que funcionará igual.
-    }, [category]);
-
-    
+    const { data:images, loading } = useFetchGifs(category);
 
     return (
         <>
             <h3>{category}</h3>
+            {loading && <p>Loading ...</p>}
             <div className="card-grid">
                 {
                     images.map(img => (
